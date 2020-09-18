@@ -1,5 +1,5 @@
 #provide both anchored and unachored commands via 'over'
-(say | speak | phrase) <user.text>$: 
+(say | speak | phrase) <user.text>:
   result = user.formatted_text(text, "NOOP")
   insert(result)
 (say | speak | phrase) <user.text> over: 

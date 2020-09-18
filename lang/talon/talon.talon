@@ -11,7 +11,7 @@ action(user.code_operator_addition): " + "
 action(user.code_operator_multiplication): " * "
 action(user.code_operator_division): " / "
 action(user.code_operator_assignment): " = "
-action(user.code_comment): "#"
+action(user.code_comment): "# "
 
 dot talon: insert(".talon")
 #defintion blocks for the context
@@ -45,7 +45,18 @@ funk <user.code_functions>:
     user.code_insert_function(code_functions, "")
 funk cell <number>:
     user.code_select_function(number - 1, "")
-funk wrap <user.code_functions>:
-    user.code_insert_function(code_functions, edit.selected_text())
-funk wrap <number>:
-    user.code_select_function(number - 1, edit.selected_text())
+    clip.set_text(old_clip)
+funk wrap <user.code_functions>: 
+    old_clip = clip.text()
+    edit.copy()
+    sleep(100ms)
+    user.code_insert_function(code_functions, clip.text())
+    clip.set_text(old_clip)
+funk wrap <number>: 
+    old_clip = clip.text()
+    edit.copy()
+    sleep(100ms)
+    user.code_select_function(number - 1, clip.text())
+	clip.set_text(old_clip)
+	
+user dot text: "<user.text>"

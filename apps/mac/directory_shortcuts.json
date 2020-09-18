@@ -1,0 +1,17 @@
+{
+    "talon": "~/.talon",
+    "talon community": "~/.talon/user/talon_community",
+    "source": "~/src",
+    "community rlkit": "~/src/rlkit",
+    "community rlkit rig": "/~/src/rlkit/examples/rig/pointmass",
+    "sandbox": "~/src/sandbox",
+    "sandbox docker": "~/src/sandbox/docker",
+    "sandbox sandbox": "~/src/sandbox/sandbox",
+    "sandbox supervisor": "~/src/sandbox/supervisor",
+    "sandbox ops": "~/src/sandbox/sandbox/ops",
+    "logs": "~/logs",
+    "var log": "/var/log",
+    "N F S": "/mnt/nfs",
+    "dot files": "~/src/dotfiles",
+    "D G I py": "~/src/dji-sdk-python"
+}

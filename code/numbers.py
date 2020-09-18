@@ -147,6 +147,12 @@ assert(test_num([1, 'million', 10, 10]) == 100001010)
 ctx = Context()
 
 
+# a series of digits allowing leading 0s (not strictly an integer)
+@ctx.capture("self.str_digits", rule=f"{alt_digits}+")
+def str_digits(m):
+    return "".join([str(digits_map[n]) for n in m])
+
+
 @ctx.capture("digits", rule=f"{alt_digits}+")
 def digits(m):
     return int("".join([str(digits_map[n]) for n in m]))
@@ -180,7 +186,8 @@ def number_scaled(m):
 # Example: " one one five            " == 115
 #          " one fifteen             " == 115
 #          " one hundred and fifteen " == 115
-@ctx.capture("number", rule=f"(<digits> | [<digits>] <user.number_scaled>)")
+# @ctx.capture("number", rule=f"(<digits> | [<digits>] <user.number_scaled>)")
+@ctx.capture("number", rule=f"<digits>")
 def number(m):
     return int("".join(str(i) for i in list(m)))
 
@@ -200,3 +207,8 @@ mod.list("number_scaled", desc="Mix of numbers and digits")
 @mod.capture
 def number_scaled(m) -> str:
     "Returns a series of numbers as a string"
+
+
+@mod.capture
+def str_digits(m) -> str:
+    "a series of digits allowing leading 0s (not strictly an integer)"

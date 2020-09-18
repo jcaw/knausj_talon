@@ -173,6 +173,11 @@ class user_actions:
         if number < 10:
             actions.user.idea("action GoToTab{}".format(number))
 
+    # def select_line(line: int):
+    #     # actions.user.idea("goto {} 0".format(n)),
+    #     actions.user.jump_line(line)
+    #     actions.user.idea("action EditorSelectLine"),
+
     def extend_until_line(line: int):
         actions.user.idea("extend {}".format(line))
 
@@ -198,3 +203,10 @@ class user_actions:
 
     def line_clone(line: int):
         actions.user.idea("clone {}".format(line))
+
+    def split_number(index: int):
+        # depends on plug-in: tab shifter
+        for i in range(10):
+            actions.user.idea("action TabShiftActions.MoveFocusLeft")
+        for i in range(1, index):
+            actions.user.idea("action TabShiftActions.MoveFocusRight")

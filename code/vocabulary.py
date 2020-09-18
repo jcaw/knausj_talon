@@ -98,6 +98,23 @@ def text(m) -> str:
     return result
 
 
+@mod.capture(rule="([<user.text>])")
+def optional_text(m) -> str:
+    if hasattr(m, "text"):
+        return m.text
+    else:
+        return ""
+
+
+# TODO: should this be handled in a more generic way?
+@mod.capture(rule="([<user.text>])")
+def optional_snake_text(m) -> str:
+    if hasattr(m, "text"):
+        return "_".join(m.text.split(" "))
+    else:
+        return ""
+
+
 mod.list("vocabulary", desc="user vocabulary")
 
 ctx = Context()

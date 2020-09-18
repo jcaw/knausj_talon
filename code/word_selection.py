@@ -52,14 +52,21 @@ def big_word_prev(index):
 
 
 def stop_selection(cursor_position):
+    """
+    determine if anything is currently selected. If it is selected, deselect it, if it is not
+    selected, leave the cursor in the position we found it
+    """
     assert cursor_position in ("left", "right")
 
-    with clip.capture() as s:
-        actions.edit.extend_right()
-        time.sleep(0.25)
-        actions.edit.copy()
-    current_highlight = s.get()
-    actions.edit.extend_left()
+    try:
+        with clip.capture() as s:
+            actions.edit.extend_right()
+            time.sleep(0.25)
+            actions.edit.copy()
+        current_highlight = s.get()
+        actions.edit.extend_left()
+    except clip.NoChange:
+        current_highlight = ""
 
     if len(current_highlight) > 1:
         if cursor_position == "left":
@@ -72,15 +79,13 @@ def word_neck(word_index, valid_characters=alphanumeric):
     with clip.revert():
         stop_selection("right")
 
-        actions.edit.extend_line_end()
-        time.sleep(0.25)
-        actions.edit.copy()
+        with clip.capture() as s:
+            actions.edit.extend_line_end()
+            time.sleep(0.25)
+            actions.edit.copy()
         actions.edit.left()
         time.sleep(0.25)
-        text_right = clip.get().lower()
-
-    print(text_right)
-    print(word_index, type(word_index))
+        text_right = s.get().lower()
 
     is_word = [character in valid_characters for character in text_right]
     word_count = 1
@@ -118,12 +123,13 @@ def word_prev(word_index, valid_characters=alphanumeric):
     with clip.revert():
         stop_selection("left")
 
-        actions.edit.extend_line_start()
-        time.sleep(0.25)
-        actions.edit.copy()
+        with clip.capture() as s:
+            actions.edit.extend_line_start()
+            time.sleep(0.25)
+            actions.edit.copy()
         actions.edit.right()
         time.sleep(0.25)
-        text_right = clip.get().lower()
+        text_right = s.get().lower()
 
     text_right = list(reversed(text_right))
 
@@ -151,3 +157,4 @@ def word_prev(word_index, valid_characters=alphanumeric):
     # now select the word
     for i in range(0, end_position - start_position):
         actions.edit.extend_left()
+

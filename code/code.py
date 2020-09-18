@@ -58,6 +58,7 @@ extension_lang_map = {
     "vimrc": "vimscript",
 }
 
+
 # flag indicates whether or not the title tracking is enabled
 forced_language = False
 
@@ -96,8 +97,10 @@ class code_actions:
 
             if result in extension_lang_map:
                 result = extension_lang_map[result]
+        else:
+            print(f"forced_language: {forced_language}")
 
-        # print("code.language: " + result)
+        print("code.language: " + result)
         return result
 
 
