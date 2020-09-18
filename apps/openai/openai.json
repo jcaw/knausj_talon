@@ -1,0 +1,240 @@
+[
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "important openai",
+        "output": "import openai"
+    },
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "important math",
+        "output": "import math"
+    },
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "for i in range10",
+        "output": "for i in range(10):"
+    },
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "while true",
+        "output": "while True:"
+    },
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "import streamlitas st",
+        "output": "import streamlit as st"
+    },
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "import open ai",
+        "output": "import openai"
+    },
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "for patterning patterns",
+        "output": "for pattern in patterns:"
+    },
+    {
+        "tags": [
+            "css"
+        ],
+        "input": "width 100%",
+        "output": "{\"width\": \"100%\"}"
+    },
+    {
+        "tags": [
+            "css"
+        ],
+        "input": "text area font courier new",
+        "output": "\"font-family\": \"courier new\"}"
+    },
+    {
+        "tags": [
+            "javascript"
+        ],
+        "input": "input prompt box",
+        "output": "window.prompt({})"
+    },
+    {
+        "tags": [
+            "homophone"
+        ],
+        "input": "lethargy do to",
+        "output": "lethargy due to"
+    },
+    {
+        "tags": [
+            "text"
+        ],
+        "input": "It's looking like early an evening next week",
+        "output": "It's looking like an evening early next week"
+    },
+    {
+        "tags": [
+            "bash"
+        ],
+        "input": "install ngrok",
+        "output": "*must be downloaded from browser*"
+    },
+    {
+        "tags": [
+            "typo"
+        ],
+        "input": "- hierarchical some dsummarizing",
+        "output": "- hierarchical summarizing"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"shell Whereami\": \"pwd \",",
+        "output": "shell Whereami: \"pwd \""
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"ricky\": Key(\"ctrl-e\"),",
+        "output": "ricky: key(\"ctrl-e\")"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"talon reple\": \"~/.talon/bin/repl\",",
+        "output": "talon reple: \"~/.talon/bin/repl\""
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"shell clear\": [Key(\"ctrl-c\"), \"clear\\n\"],",
+        "output": "shell clear:\n    key(\"ctrl-c\")\n    insert(\"clear\\n\")"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"shell copy [<dgndictation>]\": [\"cp \", text],",
+        "output": "shell copy <user.optional_text>: \"cp {optional_text}\""
+    },
+    {
+        "tags": [
+            "homophone"
+        ],
+        "input": "hear as an example of a homophone fix",
+        "output": "here as an example of a homophone fix"
+    },
+    {
+        "tags": [
+            "homophone"
+        ],
+        "input": "I have to of them",
+        "output": "I have two of them"
+    },
+    {
+        "tags": [
+            "homophone"
+        ],
+        "input": "whose add was that?",
+        "output": "whose ad was that?"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"shell rerun\": shell_rerun,",
+        "output": "shell rerun: user.shell_rerun()"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"[shell] mosh {global_terminal.servers}\": mosh_servers,",
+        "output": "shell mosh {user.servers}: mosh_servers"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"create virtual environment\": [\"virtualenv -p python3 venv\", Key(\"enter\")],",
+        "output": "create virtual environment:\n    insert(\"virtualenv -p python3 venv\")\n    key(\"enter\")"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"activate virtual environment\": [\n    \"source `find . | grep bin/activate$`\",\n    Key(\"enter\"),\n],",
+        "output": "activate virtual environment:\n    insert(\"source `find . | grep bin/activate$`\")\n    key(\"enter\")"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"docker detach\": [Key(\"ctrl-p\"), Key(\"ctrl-q\")],",
+        "output": "docker detach:\n    key(\"ctrl-p\")\n    key(\"ctrl-q\")"
+    },
+    {
+        "tags": [
+            "cube control"
+        ],
+        "input": "cube run-container: \"kubectl run-container \"\n",
+        "output": "cube run-container: insert(user.kubectl_run_container())\n"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "\"(T mux | teemucks) new session [<dgndictation>]\": [\"tmux new-session -t \", text],",
+        "output": "(T mux | teemucks) new session <user.optional_text>: \"tmux new-session -t {optional_text}\""
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "f\"{pip}\": f\"{pip}\",",
+        "output": "<user.pip>: \"{pip}\""
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "f\"{pip} install\": f\"{pip} install \",",
+        "output": "<user.pip> install: \"{pip} install \""
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "return [<user.text>] [over]: [\"return \", snake_text]",
+        "output": "return <user.optional_snake_text> [over]: \"return {optional_snake_text}\""
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "py elif: [\"elif :\", Key(\"left\")]",
+        "output": "py elif: user.insert_cursor(\"elif [|]:\")"
+    },
+    {
+        "tags": [
+            "old talon"
+        ],
+        "input": "self [(dot | doubt)] <user.text> [over]: [\"self.\", snake_text]",
+        "output": "self [(dot | doubt)] <user.optional_snake_text> [over]: \"self.{optional_snake_text}\""
+    }
+]

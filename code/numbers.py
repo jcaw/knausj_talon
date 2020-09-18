@@ -174,6 +174,15 @@ def number_string(m) -> str:
 def number(m) -> int:
     """Parses a number phrase, returning it as an integer."""
     return int(m.number_string)
+# # a series of digits allowing leading 0s (not strictly an integer)
+# @ctx.capture("self.str_digits", rule=f"{alt_digits}+")
+# def str_digits(m):
+#     return "".join([str(digits_map[n]) for n in m])
+
+
+# @ctx.capture("digits", rule=f"{alt_digits}+")
+# def digits(m):
+#     return int("".join([str(digits_map[n]) for n in m]))
 
 @ctx.capture("number_signed", rule=f"[negative|minus] <number>")
 def number_signed(m):
@@ -184,3 +193,56 @@ def number_signed(m):
     "number_small", rule=f"({alt_digits} | {alt_teens} | {alt_tens} [{alt_digits}])"
 )
 def number_small(m): return int(parse_number(list(m)))
+# =======
+# def number_small(m):
+#     result = 0
+#     for word in m:
+#         if word in digits_map:
+#             result += digits_map[word]
+#         elif word in tens_map:
+#             result += tens_map[word]
+#         elif word in teens_map:
+#             result += teens_map[word]
+#     return result
+
+
+# @ctx.capture(
+#     "self.number_scaled",
+#     rule=f"<number_small> [{alt_scales} ([and] (<number_small> | {alt_scales} | <number_small> {alt_scales}))*]",
+# )
+# def number_scaled(m):
+#     return fuse_num(fuse_scale(fuse_num(fuse_scale(list(m), 1000))))[0]
+
+
+# # This rule offers more colloquial number speaking when combined with a command
+# # like: "go to line <number>"
+# # Example: " one one five            " == 115
+# #          " one fifteen             " == 115
+# #          " one hundred and fifteen " == 115
+# # @ctx.capture("number", rule=f"(<digits> | [<digits>] <user.number_scaled>)")
+# @ctx.capture("number", rule=f"<digits>")
+# def number(m):
+#     return int("".join(str(i) for i in list(m)))
+
+
+# @ctx.capture("number_signed", rule=f"[negative] <number>")
+# def number_signed(m):
+#     number = m[-1]
+#     if m[0] == "negative":
+#         return -number
+#     return number
+
+
+# mod = Module()
+# mod.list("number_scaled", desc="Mix of numbers and digits")
+
+
+# @mod.capture
+# def number_scaled(m) -> str:
+#     "Returns a series of numbers as a string"
+
+
+# @mod.capture
+# def str_digits(m) -> str:
+#     "a series of digits allowing leading 0s (not strictly an integer)"
+# >>>>>>> .

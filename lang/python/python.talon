@@ -87,6 +87,12 @@ action(user.code_from_import):
     key(space)
     edit.left()
 action(user.code_comment): "# "
+action(user.code_private_function):
+    insert("def _")
+action(user.code_protected_function):
+    user.code_private_function()
+action(user.code_public_function):
+	insert("def ")
 action(user.code_state_return):
 	insert("return ")
 action(user.code_true): "True"
@@ -100,12 +106,50 @@ self taught: "self."
 pie test: "pytest"
 state past: "pass"
 
-^funky <user.text>$: user.code_default_function(text)
+#^funky <user.text>$: user.code_private_function(text)
 #^pro funky <user.text>$: user.code_protected_function(text)
 ^pub funky <user.text>$: user.code_public_function(text)
 #^static funky <user.text>$: user.code_private_static_function(text)
 #^pro static funky <user.text>$: user.code_protected_static_function(text)
 #^pub static funky <user.text>$: user.code_public_static_function(text)
+
+self: "self"
+self dot: "self."
+self [(dot | doubt)] <user.optional_snake_text> [over]: "self.{optional_snake_text}"
+self [(dot | doubt)] private <user.optional_snake_text> [over]: "self._{optional_snake_text}"
+from <user.optional_snake_text> import {user.optional_snake_text_2} [over]: "from {optional_snake_text} import {optional_snake_text_2}"
+
+star (arguments | args): "*args"
+star star K wargs: "**kwargs"
+
+true: " True"
+champ true: " True"
+false: " False"
+champ false: " False"
+none: " None"
+champ none: " None"
+F string: user.insert_cursor('f"[|]"')
+wrap call <user.optional_text>:
+    key("(")
+    key("left")
+    insert(optional_text)
+py in <user.optional_snake_text>: "in {optional_snake_text}"
+py is not: " is not "
+py if <user.optional_snake_text>:
+    insert("if {optional_snake_text}:")
+    key("left")
+py else: "else:\n"
+py elif: user.insert_cursor("elif [|]:")
+py with: user.insert_cursor("with [|]:")
+py while: user.insert_cursor("while [|]:")
+py try: "try:"
+py import <user.optional_snake_text> [over]: "import {optional_snake_text}"
+py from <user.optional_snake_text> [over]: "from {optional_snake_text}"
+py from <user.optional_snake_text> import: "from {optional_snake_text} import "
+return <user.optional_snake_text> [over]: "return {optional_snake_text}"
+set trace: "import ipdb; ipdb.set_trace()"
+import numb pie [as N P]: "import numpy as np"
+
 raise {user.python_exception}: user.insert_cursor("raise {python_exception}([|])")
 
 # for annotating function parameters
