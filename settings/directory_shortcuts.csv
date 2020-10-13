@@ -1,0 +1,17 @@
+Path,Spoken Form (If Different)
+../,parent
+~/,home
+/tmp,temp
+~/src,source
+~/src/rlkit,community rlkit
+~/src/rlkit/examples/rig/pointmass,community rlkit rig
+~/src/sandbox,sandbox
+~/src/sandbox/docker,sandbox docker
+~/src/sandbox/sandbox,sandbox sandbox
+~/src/sandbox/supervisor,sandbox supervisor
+~/src/sandbox/sandbox/ops,sandbox ops
+~/logs,logs
+/var/log,var log
+/mnt/nfs,N F S
+~/src/dotfiles,dot files
+~/src/dji-sdk-python,D G I py
