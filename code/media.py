@@ -1,5 +1,5 @@
 from talon import Module
-from talon import applescript
+from talon.mac import applescript
 
 mod = Module()
 
