@@ -49,8 +49,8 @@ _simple_vocab_default = ["nmap", "admin", "Cisco", "Citrix", "VPN", "DNS", "Mine
 # Defaults for different pronounciations of words that need to be added to
 # Talon's vocabulary.
 _mapping_vocab_default = {
-    "N map": "nmap",
-    "under documented": "under-documented",
+    # "N map": "nmap",
+    # "under documented": "under-documented",
 }
 
 
@@ -89,6 +89,9 @@ def text(m) -> str:
             )
         else:
             words.extend(item.split(" "))
+
+    # override all case decisions made by dragon
+    words = [word.lower() for word in words]
 
     result = ""
     for i, word in enumerate(words):

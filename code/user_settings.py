@@ -59,6 +59,7 @@ def _load_csv_dict(
                         f'"{file_name}": More than two values in row: {row}.'
                         + " Ignoring the extras."
                     )
+    print("mapping", mapping)
     return mapping
 
 
