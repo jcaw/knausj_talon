@@ -3,6 +3,7 @@ app: iTerm2
 -
 tag(): terminal
 tag(): user.splits
+tag(): user.git
 
 # Pane creation and navigation
 action(user.split_window_horizontally): key("cmd-shift-d")
@@ -74,7 +75,7 @@ shell copy <user.optional_text>: "cp {optional_text}"
 shell copy (recursive | curse) [<user.optional_text>]: "cp -r {optional_text}"
 shell kill: key("ctrl-c")
 shell list <user.optional_text>: "ls {optional_text}"
-shell list all <user.optional_text>: "ls -la {optional_text}"
+shell list (all | i'll) <user.optional_text>: "ls -la {optional_text}"
 shell make <user.optional_text>: "mkdir {optional_text}"
 shell mipple <user.optional_text>: "mkdir -p {optional_text}"
 shell move <user.optional_text>: "mv {optional_text}"
