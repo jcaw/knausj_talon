@@ -152,16 +152,18 @@ formatters_words = {
     "yeller": formatters_dict["ALL_CAPS"],
     "alldown": formatters_dict["ALL_LOWERCASE"],
     "camel": formatters_dict["PRIVATE_CAMEL_CASE"],
-    "dot": formatters_dict["DOT_SNAKE"],
+    # "dot": formatters_dict["DOT_SNAKE"],
     "dotted": formatters_dict["DOT_SEPARATED"],
     "dubstring": formatters_dict["DOUBLE_QUOTED_STRING"],
     "dunder": formatters_dict["DOUBLE_UNDERSCORE"],
     "crift": formatters_dict["PUBLIC_CAMEL_CASE"],
     "spine": formatters_dict["DASH_SEPARATED"],
     "dash": formatters_dict["TERMINAL_DASH_SEPARATED"],
-    "packed": formatters_dict["DOUBLE_COLON_SEPARATED"],
+    # "packed": formatters_dict["DOUBLE_COLON_SEPARATED"],
     "padded": formatters_dict["SPACE_SURROUNDED_STRING"],
-    # "say": formatters_dict["NOOP"],
+    "phrase": formatters_dict["ALL_LOWERCASE"],
+    "fray": formatters_dict["ALL_LOWERCASE"],
+    "for his": formatters_dict["ALL_LOWERCASE"],
     "champ": formatters_dict["CAPITALIZE_FIRST_WORD"],
     "slasher": formatters_dict["SLASH_SEPARATED"],
     "smash": formatters_dict["NO_SPACES"],
@@ -277,7 +279,8 @@ class Actions:
 
         # Delete separately for compatibility with programs that don't overwrite
         # selected text (e.g. Emacs)
-        edit.delete()
+        if selected:
+            edit.delete()
         text = actions.self.formatted_text(unformatted, formatters)
         actions.insert(text)
         return text
@@ -291,8 +294,8 @@ class Actions:
 ctx.lists["self.formatters"] = formatters_words.keys()
 ctx.lists["self.prose_formatter"] = {
     "say": "NOOP",
-    "speak": "NOOP",
-    "sentence": "CAPITALIZE_FIRST_WORD",
+    # "speak": "NOOP",
+    # "sentence": "CAPITALIZE_FIRST_WORD",
 }
 
 

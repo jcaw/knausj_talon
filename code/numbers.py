@@ -5,20 +5,23 @@ mod = Module()
 ctx = Context()
 
 digits = "zero one two three four five six seven eight nine".split()
-teens = "eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
-tens = "ten twenty thirty forty fifty sixty seventy eighty ninety".split()
+# teens = "eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+# tens = "ten twenty thirty forty fifty sixty seventy eighty ninety".split()
 scales = "hundred thousand million billion trillion quadrillion quintillion sextillion septillion octillion nonillion decillion".split()
 
 digits_map = {n: i for i, n in enumerate(digits)}
 digits_map["oh"] = 0
-teens_map = {n: i + 11 for i, n in enumerate(teens)}
-tens_map = {n: 10 * (i + 1) for i, n in enumerate(tens)}
+digits_map["ate"] = 8
+# teens_    bbmap = {n: i + 11 for i, n in enumerate(teens)}
+# tens_map = {n: 10 * (i + 1) for i, n in enumerate(tens)}
+tens_map = []
 scales_map = {n: 10 ** (3 * (i+1)) for i, n in enumerate(scales[1:])}
 scales_map["hundred"] = 100
 
 numbers_map = digits_map.copy()
-numbers_map.update(teens_map)
-numbers_map.update(tens_map)
+numbers_map["toto"] = 22
+# numbers_map.update(teens_map)
+# numbers_map.update(tens_map)
 numbers_map.update(scales_map)
 
 def parse_number(l: List[str]) -> str:
@@ -151,13 +154,14 @@ def split_list(value, l: list) -> Iterator:
 
 # ---------- CAPTURES ----------
 alt_digits = "(" + ("|".join(digits_map.keys())) + ")"
-alt_teens = "(" + ("|".join(teens_map.keys())) + ")"
-alt_tens = "(" + ("|".join(tens_map.keys())) + ")"
+# alt_teens = "(" + ("|".join(teens_map.keys())) + ")"
+# alt_tens = "(" + ("|".join(tens_map.keys())) + ")"
 alt_scales = "(" + ("|".join(scales_map.keys())) + ")"
 number_word = "(" + "|".join(numbers_map.keys()) + ")"
 
 # TODO: allow things like "double eight" for 88
-@ctx.capture("digit_string", rule=f"({alt_digits} | {alt_teens} | {alt_tens})+")
+# @ctx.capture("digit_string", rule=f"({alt_digits} | {alt_teens} | {alt_tens})+")
+@ctx.capture("digit_string", rule=f"({alt_digits})+")
 def digit_string(m) -> str: return parse_number(list(m))
 
 @ctx.capture("digits", rule="<digit_string>")
@@ -190,9 +194,22 @@ def number_signed(m):
     return -number if (m[0] in ["negative", "minus"]) else number
 
 @ctx.capture(
-    "number_small", rule=f"({alt_digits} | {alt_teens} | {alt_tens} [{alt_digits}])"
+    # "number_small", rule=f"({alt_digits} | {alt_teens} | {alt_tens} [{alt_digits}])"
+    "number_small", rule=f"{alt_digits} [{alt_digits}]"
 )
 def number_small(m): return int(parse_number(list(m)))
+
+# @ctx.capture(
+#     "single_digit", rule=f"({alt_digits})"
+# )
+# def single_digit(m):
+#     print(m)
+#     return int(parse_number(list(m)))
+
+
+
+
+
 # =======
 # def number_small(m):
 #     result = 0

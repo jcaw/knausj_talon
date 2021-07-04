@@ -130,7 +130,7 @@
             "old talon"
         ],
         "input": "\"shell copy [<dgndictation>]\": [\"cp \", text],",
-        "output": "shell copy <user.optional_text>: \"cp {optional_text}\""
+        "output": "shell copy [<user.text>]: \"cp {text or ''}\""
     },
     {
         "tags": [
@@ -200,7 +200,7 @@
             "old talon"
         ],
         "input": "\"(T mux | teemucks) new session [<dgndictation>]\": [\"tmux new-session -t \", text],",
-        "output": "(T mux | teemucks) new session <user.optional_text>: \"tmux new-session -t {optional_text}\""
+        "output": "(T mux | teemucks) new session [<user.text>]: \"tmux new-session -t {text or ''}\""
     },
     {
         "tags": [
@@ -221,7 +221,7 @@
             "old talon"
         ],
         "input": "return [<user.text>] [over]: [\"return \", snake_text]",
-        "output": "return <user.optional_snake_text> [over]: \"return {optional_snake_text}\""
+        "output": "return [<user.snake_text>] [over]: \"return {snake_text or ''}\""
     },
     {
         "tags": [
@@ -235,6 +235,76 @@
             "old talon"
         ],
         "input": "self [(dot | doubt)] <user.text> [over]: [\"self.\", snake_text]",
-        "output": "self [(dot | doubt)] <user.optional_snake_text> [over]: \"self.{optional_snake_text}\""
+        "output": "self [(dot | doubt)] [<user.snake_text>] [over]: \"self.{snake_text or ''}\""
+    },
+    {
+        "tags": [
+            "trial"
+        ],
+        "input": "reward += -self.trial.suggest_uniform(\"velocity_not_done_offset\", 0, 5) * (",
+        "output": "reward += -self.reward_settings.velocity_not_done_offset * ("
+    },
+    {
+        "tags": [
+            "trial"
+        ],
+        "input": "self.trial.suggest_uniform(\"velocity_not_done_scale\", 0, 5),",
+        "output": "self.reward_settings.velocity_not_done_scale,"
+    },
+    {
+        "tags": [
+            "trial"
+        ],
+        "input": ") * self.trial.suggest_uniform(\"directional_velocity_scale\", 0, 5)",
+        "output": ") * self.reward_settings.directional_velocity_scale"
+    },
+    {
+        "tags": [
+            "trial"
+        ],
+        "input": "reward -= self.trial.suggest_uniform(\"angular_velocity_not_done_offset\", 0, 5) * (magnitude > 0.3)",
+        "output": "reward -= self.reward_settings.angular_velocity_not_done_offset * (magnitude > 0.3)"
+    },
+    {
+        "tags": [
+            "temp"
+        ],
+        "input": "reward_settings.position_not_done_scale = trial.suggest_uniform(",
+        "output": "reward_settings[\"position_not_done_scale\"] = trial.suggest_uniform("
+    },
+    {
+        "tags": [
+            "temp"
+        ],
+        "input": "reward_settings.velocity_scale = trial.suggest_uniform(\"velocity_scale\", 0, 25)",
+        "output": "reward_settings[\"velocity_scale\"] = trial.suggest_uniform(\"velocity_scale\", 0, 25)"
+    },
+    {
+        "tags": [
+            "temp"
+        ],
+        "input": "reward = 1 - (goal_distance * self.reward_settings.goal_distance_scale)",
+        "output": "reward = 1 - (goal_distance * self.reward_settings[\"goal_distance_scale\"])"
+    },
+    {
+        "tags": [
+            "temp"
+        ],
+        "input": "self.reward_settings.velocity_not_done_scale,",
+        "output": "self.reward_settings[\"velocity_not_done_scale\"],"
+    },
+    {
+        "tags": [
+            "temp"
+        ],
+        "input": "reward += -self.reward_settings.velocity_not_done_offset * (",
+        "output": "reward += -self.reward_settings[\"velocity_not_done_offset\"] * ("
+    },
+    {
+        "tags": [
+            "python"
+        ],
+        "input": "@click.option(\"--train/--no-dream\", default=True)",
+        "output": "@click.option(\"--train/--no-train\", default=True)"
     }
 ]

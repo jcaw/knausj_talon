@@ -9,6 +9,7 @@
     "sandbox sandbox": "~/src/sandbox/sandbox",
     "sandbox supervisor": "~/src/sandbox/supervisor",
     "sandbox ops": "~/src/sandbox/sandbox/ops",
+    "sandbox tools": "~/src/sandbox/sandbox/tools",
     "logs": "~/logs",
     "var log": "/var/log",
     "N F S": "/mnt/nfs",

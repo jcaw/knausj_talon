@@ -118,7 +118,7 @@ modifier_keys = {
     "shift": "shift",  #'sky':     'shift',
     "super": "super",
 }
-if app.platform  == "mac":
+if app.platform == "mac":
     modifier_keys["command"] = "cmd"
     modifier_keys["option"] = "alt"
 ctx.lists["self.modifier_key"] = modifier_keys
@@ -173,10 +173,17 @@ symbol_key_words = {
     "down score": "_",
     "under score": "_",
     "paren": "(",
+    "pren": "(",
     "L paren": "(",
     "left paren": "(",
     "R paren": ")",
     "right paren": ")",
+    # "bren": "(",
+    # "L bren": "(",
+    # "left bren": "(",
+    # "R bren": ")",
+    # "rpren": ")",
+    # "right bren": ")",
     "brace": "{",
     "left brace": "{",
     "R brace": "}",
@@ -212,7 +219,7 @@ ctx.lists["self.arrow_key"] = {
 }
 
 simple_keys = [
-    "end",
+    # "end",
     "enter",
     "escape",
     "home",
@@ -220,7 +227,7 @@ simple_keys = [
     "pagedown",
     "pageup",
     "space",
-    "tab",
+    # "tab",
 ]
 
 alternate_keys = {
@@ -248,4 +255,3 @@ class Actions:
     def get_alphabet() -> dict:
         """Provides the alphabet dictionary"""
         return alphabet
-

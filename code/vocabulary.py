@@ -55,6 +55,12 @@ _word_map_defaults = {
 _word_map_defaults.update({word.lower(): word for word in _capitalize_defaults})
 
 
+# # TODO: should this be handled in a more generic way?
+@mod.capture(rule="(<user.text>)")
+def snake_text(m) -> str:
+    return "_".join(m.text.split(" "))
+
+
 # "dictate.word_map" is used by `actions.dictate.replace_words` to rewrite words
 # Talon recognized. Entries in word_map don't change the priority with which
 # Talon recognizes some words over others.

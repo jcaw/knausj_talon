@@ -4,6 +4,8 @@ app: iTerm2
 tag(): terminal
 tag(): user.splits
 tag(): user.git
+tag(): user.tmux
+
 
 # Pane creation and navigation
 action(user.split_window_horizontally): key("cmd-shift-d")
@@ -44,18 +46,33 @@ cd wild:
     key("left")
     key("left")
     key("left")
-cd wild <user.optional_text>:
-    insert("cd {optional_text}**; ls")
+cd wild [<user.text>]:
+    insert("cd {text or ''}**; ls")
     Key("left")
     Key("left")
     Key("left")
     Key("left")
     Key("left")
-cd {user.directories}: "cd {directories}"
+cd {user.directories}:
+    insert("cd {directories}; ls")
+    key("enter")
 directory {user.directories}: "{directories}"
-(ls | run ellis | run alice): "ls\n"
-(la | run la): "ls -la\n"
-durrup: "cd ..; ls\n"
+((go | C D) active sandbox | (go | C D) sandbox active):
+    insert("cd ~/src/sandbox")
+    key("enter")
+    insert("source `find . | grep bin/activate$`")
+    key("enter")
+((go | C D) active ops | (go | C D) ops active):
+    insert("cd ~/src/sandbox")
+    key("enter")
+    insert("source `find . | grep bin/activate$`")
+    key("enter")
+    insert("cd ~/src/sandbox/sandbox/ops")
+    key("enter")
+
+(LSin | run ellis | run alice): "ls\n"
+# (la | run la): "ls -la\n"
+# durrup: "cd ..; ls\n"
 go back: "cd -\n"
 pseudo: "sudo "
 pseudo [make me a] sandwich:
@@ -71,24 +88,24 @@ shell (make executable | add executable permissions): "chmod a+x "
 shell clear:
     key("ctrl-c")
     insert("clear\n")
-shell copy <user.optional_text>: "cp {optional_text}"
-shell copy (recursive | curse) [<user.optional_text>]: "cp -r {optional_text}"
+shell copy [<user.text>]: "cp {text or ''}"
+shell copy (recursive | curse) [<user.text>]: "cp -r {text or ''}"
 shell kill: key("ctrl-c")
-shell list <user.optional_text>: "ls {optional_text}"
-shell list (all | i'll) <user.optional_text>: "ls -la {optional_text}"
-shell make <user.optional_text>: "mkdir {optional_text}"
-shell mipple <user.optional_text>: "mkdir -p {optional_text}"
-shell move <user.optional_text>: "mv {optional_text}"
-shell remove <user.optional_text>: "rm {optional_text}"
-shell remove (recursive | curse) <user.optional_text>: "rm -rf {optional_text}"
+shell list [<user.text>]: "ls {text or ''}"
+shell list (all | i'll) [<user.text>]: "ls -la {text or ''}"
+shell make directory [<user.text>]: "mkdir {text or ''}"
+# shell mipple [<user.text>]: "mkdir -p {text or ''}"
+shell move [<user.text>]: "mv {text or ''}"
+shell remove [<user.text>]: "rm {text or ''}"
+shell remove (recursive | curse) [<user.text>]: "rm -rf {text or ''}"
 shell enter: "ag -l | entr "
-shell enter 1: "ag -l . .. | entr "
-shell enter 2: "ag -l . ../.. | entr "
-shell enter 3: "ag -l . ../../.. | entr "
-shell enter 4: "ag -l . ../../../.. | entr "
-shell less <user.optional_text>: "less {optional_text}"
-shell cat <user.optional_text>: "cat {optional_text}"
-shell X args <user.optional_text>: "xargs {optional_text}"
+shell enter one: "ag -l . .. | entr "
+shell enter two: "ag -l . ../.. | entr "
+shell enter three: "ag -l . ../../.. | entr "
+shell enter four: "ag -l . ../../../.. | entr "
+shell less [<user.text>]: "less {text or ''}"
+shell cat [<user.text>]: "cat {text or ''}"
+shell X args [<user.text>]: "xargs {text or ''}"
 shall W get: "wget "
 # shell mosh: "mosh "
 shell M player: "mplayer "
@@ -154,8 +171,8 @@ conda list: "conda list "
 
 # tmux
 (T mux | teemucks) list: "tmux ls"
-(T mux | teemucks) new session <user.optional_text>: "tmux new-session -t {optional_text}"
-(T mux | teemucks) attach <user.optional_text>: "tmux a -t {optional_text}"
+(T mux | teemucks) new session [<user.text>]: "tmux new-session -t {text or ''}"
+(T mux | teemucks) attach [<user.text>]: "tmux a -t {text or ''}"
 (T mux | teemucks) scroll:
     key("ctrl-b")
     key("[")
@@ -208,6 +225,16 @@ ross topic info: "rostopic info "
 ross topic list: "rostopic list "
 ross topic pub: "rostopic pub "
 ross topic type: "rostopic type "
+ross launch: "roslaunch "
+ross node: "rosnode "
+ross node list: "rosnode list "
+ross node info: "rosnode info "
+(ross param | rosparam): "rosparam "
+ross run: "rosrun "
+ross run T F: "rosrun tf tf_"
+ross run T F echo: "rosrun tf tf_echo "
+ross run T F monitor: "rosrun tf tf_monitor "
+
 
 # supervisorctl
 supervisor control: "supervisorctl"
@@ -241,3 +268,6 @@ dat version: "dat version "
 {user.pip} install --upgrade: "{pip} install --upgrade "
 {user.pip} uninstall: "{pip} uninstall "
 {user.pip} list: "{pip} list"
+
+# cset
+see set list: "cset set -l"

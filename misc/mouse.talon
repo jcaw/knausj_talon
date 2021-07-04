@@ -36,7 +36,7 @@ midclick:
 	key("{modifiers}:up")
 	# close the mouse grid
 	user.grid_close()
-(dubclick | duke): 
+(double click | dubclick):
 	mouse_click()
 	mouse_click()
 	# close the mouse grid
@@ -47,7 +47,7 @@ midclick:
 	mouse_click()
 	# close the mouse grid
 	user.grid_close()
-drag: 
+mouse drag:
 	user.mouse_drag()
 	# close the mouse grid
 	user.grid_close()

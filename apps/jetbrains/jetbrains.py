@@ -164,6 +164,11 @@ class win_actions:
 
         return ""
 
+    # this used to be necessary, not sure if it still is
+    # def file_ext():
+    #     return actions.win.title().split(".")[-1]
+
+
 @ctx.action_class("edit")
 class edit_actions:
     def jump_line(n: int):

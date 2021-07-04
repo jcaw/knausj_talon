@@ -67,12 +67,12 @@ action(user.multi_cursor_select_more_occurrences): user.idea("action SelectNextO
 complete: user.idea("action CodeCompletion")
 perfect: user.idea("action CodeCompletion,action CodeCompletion")
 smart: user.idea("action SmartTypeCompletion")
-(done | finish):  user.idea("action EditorCompleteStatement")
+finish: user.idea("action EditorCompleteStatement")
 # Copying
 grab <number>: user.idea_grab(number)
 # Actions
-(action | please): user.idea("action GotoAction")
-(action | please) <user.text>:
+please: user.idea("action GotoAction")
+please <user.text>:
   user.idea("action GotoAction")
   insert(text)
 # Refactoring

@@ -115,9 +115,9 @@ state past: "pass"
 
 self: "self"
 self dot: "self."
-self [(dot | doubt)] <user.optional_snake_text> [over]: "self.{optional_snake_text}"
-self [(dot | doubt)] private <user.optional_snake_text> [over]: "self._{optional_snake_text}"
-from <user.optional_snake_text> import {user.optional_snake_text_2} [over]: "from {optional_snake_text} import {optional_snake_text_2}"
+self [(dot | doubt)] [<user.snake_text>] [over]: "self.{snake_text or ''}"
+self [(dot | doubt)] private [<user.snake_text>] [over]: "self._{snake_text or ''}"
+from [<user.snake_text>] import {user.optional_snake_text_2} [over]: "from {snake_text or ''} import {optional_snake_text_2}"
 
 star (arguments | args): "*args"
 star star K wargs: "**kwargs"
@@ -129,24 +129,24 @@ champ false: " False"
 none: " None"
 champ none: " None"
 F string: user.insert_cursor('f"[|]"')
-wrap call <user.optional_text>:
+wrap call [<user.text>]:
     key("(")
     key("left")
     insert(optional_text)
-py in <user.optional_snake_text>: "in {optional_snake_text}"
+py in [<user.snake_text>]: "in {snake_text or ''}"
 py is not: " is not "
-py if <user.optional_snake_text>:
-    insert("if {optional_snake_text}:")
+py if [<user.snake_text>]:
+    insert("if {snake_text or ''}:")
     key("left")
 py else: "else:\n"
 py elif: user.insert_cursor("elif [|]:")
 py with: user.insert_cursor("with [|]:")
 py while: user.insert_cursor("while [|]:")
 py try: "try:"
-py import <user.optional_snake_text> [over]: "import {optional_snake_text}"
-py from <user.optional_snake_text> [over]: "from {optional_snake_text}"
-py from <user.optional_snake_text> import: "from {optional_snake_text} import "
-return <user.optional_snake_text> [over]: "return {optional_snake_text}"
+py import [<user.snake_text>] [over]: "import {snake_text or ''}"
+py from [<user.snake_text>] [over]: "from {snake_text or ''}"
+py from [<user.snake_text>] import: "from {snake_text or ''} import "
+return [<user.snake_text>] [over]: "return {snake_text or ''}"
 set trace: "import ipdb; ipdb.set_trace()"
 import numb pie [as N P]: "import numpy as np"
 
