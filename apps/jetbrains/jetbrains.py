@@ -112,6 +112,7 @@ mod.apps.jetbrains = "app.name: IntelliJ IDEA"
 mod.apps.jetbrains = "app.name: PyCharm"
 mod.apps.jetbrains = "app.name: RubyMine"
 mod.apps.jetbrains = "app.name: RubyMine-EAP"
+mod.apps.jetbrains = "app.name: CLion"
 
 # windows
 mod.apps.jetbrains = "app.name: idea64.exe"
@@ -156,7 +157,7 @@ class win_actions:
     def filename():
         title = actions.win.title()
         result = title.split(" ")
-        
+
         for word in result:
             if "." in word:
                 return word
