@@ -1,6 +1,7 @@
 import json
 
 from talon import actions, Context, Module, resource
+
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 
 
@@ -32,7 +33,7 @@ app: iTerm2
 """
 
 mod.list("directories", desc="commonly used directories")
-ctx.lists["self.directories"] = {
+directories = {
     "up": "..",
     "up up": "../..",
     "up up up": "../../..",
@@ -45,7 +46,8 @@ ctx.lists["self.directories"] = {
     "talon plug-ins": str(TALON_PLUGINS),
     "talon community": "~/.talon/user/talon_community",
 }
-ctx.lists["self.directories"].update(load_config_json("directory_shortcuts.json"))
+directories.update(load_config_json("directory_shortcuts.json"))
+ctx.lists["self.directories"] = directories
 
 
 mod.list("servers", desc="commonly used servers")
@@ -54,6 +56,7 @@ print(ctx.lists["self.servers"])
 
 mod.list("pip", desc="pip versions")
 ctx.lists["self.pip"] = ("pip", "pip3")
+
 
 @ctx.action_class("user")
 class user_actions:
