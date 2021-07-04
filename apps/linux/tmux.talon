@@ -53,3 +53,6 @@ mux close pane:
 mux pane numbers:
     key(ctrl-b)
     key(q)
+mux detach:
+    key(ctrl-b)
+    key(d)
